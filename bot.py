@@ -1,11 +1,15 @@
 import asyncio
 from datetime import datetime, timedelta
+import os
 import random
 import aiosqlite
 from aiogram import Bot, Dispatcher, F, types
 
-# Вставь сюда токен от @BotFather в кавычках
-TOKEN = "8867608919:AAFpcZnIWLzWJ8ocwFn4iFWXTsIEKXoeLnE"
+# Токен теперь автоматически берется из переменных окружения Render
+TOKEN = os.getenv("BOT_TOKEN")
+
+if not TOKEN:
+  raise ValueError("Не найден токен! Укажи переменную BOT_TOKEN в настройках Render.")
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
